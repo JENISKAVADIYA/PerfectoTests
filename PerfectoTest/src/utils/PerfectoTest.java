@@ -1,6 +1,13 @@
 package utils;
  
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.openqa.selenium.remote.DriverCommand;
+import org.openqa.selenium.remote.RemoteExecuteMethod;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.AfterClass;
  
 /*
  *
@@ -12,7 +19,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
  *	This basic test handles the driver and the device
  */
 
-public abstract class PerfectoTest implements Runnable{
+public abstract class PerfectoTest {
 
 
 	String _DeviceId = null;
@@ -51,6 +58,27 @@ public abstract class PerfectoTest implements Runnable{
 	public abstract void beforeTest() throws Exception ;
 	public abstract void execTest() throws Exception ;
 	public abstract void endTest() throws Exception ;
+	
+	public void switchToContext(RemoteWebDriver driver, String context) {
+		RemoteExecuteMethod executeMethod = new RemoteExecuteMethod(driver);
+		Map<String,String> params = new HashMap<String,String>();
+		params.put("name", context);
+		executeMethod.execute(DriverCommand.SWITCH_TO_CONTEXT, params);
+	}
 
+	public String getCurrentContextHandle(RemoteWebDriver driver) {		  
+		RemoteExecuteMethod executeMethod = new RemoteExecuteMethod(driver);
+		String context =  (String) executeMethod.execute(DriverCommand.GET_CURRENT_CONTEXT_HANDLE, null);
+		return context;
+	}
+
+	public List<String> getContextHandles(RemoteWebDriver driver) {		  
+		RemoteExecuteMethod executeMethod = new RemoteExecuteMethod(driver);
+		List<String> contexts =  (List<String>) executeMethod.execute(DriverCommand.GET_CONTEXT_HANDLES, null);
+		return contexts;
+	}
+
+
+ 	 
 }
 
