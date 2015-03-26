@@ -25,7 +25,7 @@ public class StarbuckTest {
 		
 		DesiredCapabilities capabilities = new DesiredCapabilities("MobileOS", "", Platform.ANY);
 		capabilities.setCapability("platformName", "Android");
-		capabilities.setCapability("description", "Tomer");
+		capabilities.setCapability("description", "dustin");
 		capabilities.setCapability("automationName", "PerfectoMobile");
  		String host = "demo.perfectomobile.com";
  		String user;
@@ -54,7 +54,7 @@ public class StarbuckTest {
 	@Test
 	public void f() {
 		try {
-			l.execTest();
+		 	l.execTest();
 			logOut.execTest();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

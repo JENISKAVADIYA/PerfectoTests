@@ -18,4 +18,15 @@ public class automationActions {
 		params.put("name", appName);
 		d.executeScript("mobile:application:open", params);
 	}
+	public static void swipe(String start,String end,RemoteWebDriver d )
+	{
+ 		Map<String,String> params = new HashMap<String,String>();
+		params.put("start", start);  //50%,50%
+		params.put("end", end);  //50%,50%
+
+		d.executeScript("mobile:touch:swipe", params);
+		
+	}
+	
+	 
 }

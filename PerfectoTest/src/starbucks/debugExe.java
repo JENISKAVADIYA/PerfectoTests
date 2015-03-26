@@ -19,7 +19,10 @@ public class debugExe {
 
 		DesiredCapabilities capabilities = new DesiredCapabilities("MobileOS", "", Platform.ANY);
 		capabilities.setCapability("platformName", "Android");
-		capabilities.setCapability("description", "Uzi");
+		capabilities.setCapability("description", "Tomer");
+		capabilities.setCapability("automationName", "PerfectoMobile");
+
+		 
  		String host = "demo.perfectomobile.com";
  		String user;
  		RemoteWebDriver driver = null;
