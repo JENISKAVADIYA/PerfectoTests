@@ -36,9 +36,9 @@ public class login extends PerfectoTest{
 		try{
 			switchToContext(_driver, "NATIVE_APP");
 			_driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-			sleep(5000);
+		//	sleep(5000);
 			System.out.println(getCurrentContextHandle(_driver));
-			_driver.findElement(By.xpath("//button[text()='SIGN IN']")).click();
+			_driver.findElement(By.xpath("//*[text()='SIGN IN']")).click();
 
 			// Login 
 			_driver.findElement(By.xpath("//textfield[contains(text(),'Username')]")).sendKeys("uzi.eilon@gmail.com");
