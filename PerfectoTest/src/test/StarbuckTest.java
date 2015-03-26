@@ -18,13 +18,15 @@ import org.testng.annotations.Test;
 
 public class StarbuckTest {
 	login l;
+	logout logOut;
 	@BeforeTest
 	public void Before() {
 		
 		
 		DesiredCapabilities capabilities = new DesiredCapabilities("MobileOS", "", Platform.ANY);
 		capabilities.setCapability("platformName", "Android");
-		capabilities.setCapability("description", "Uzi");
+		capabilities.setCapability("description", "Tomer");
+		capabilities.setCapability("automationName", "PerfectoMobile");
  		String host = "demo.perfectomobile.com";
  		String user;
 		try {
@@ -32,6 +34,7 @@ public class StarbuckTest {
 	 		String password = URLEncoder.encode("Perfecto1", "UTF-8");
 	 		RemoteWebDriver driver = new RemoteWebDriver(new URL("https://" + user + ':' + password + '@' + host + "/nexperience/wd/hub"), capabilities);
 	 		l = new login(driver);
+	 		logOut = new logout(driver);
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -52,6 +55,7 @@ public class StarbuckTest {
 	public void f() {
 		try {
 			l.execTest();
+			logOut.execTest();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
