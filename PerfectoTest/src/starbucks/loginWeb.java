@@ -15,10 +15,10 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import utils.PerfectoTest;
 import utils.automationActions;
 
-public class login extends PerfectoTest{
+public class loginWeb extends PerfectoTest{
 	RemoteWebDriver _driver;
 
-	public login(RemoteWebDriver driver) {
+	public loginWeb(RemoteWebDriver driver) {
 		super(driver);
 		_driver = driver;
 	}
@@ -26,28 +26,24 @@ public class login extends PerfectoTest{
 
 	@Override
 	public void beforeTest() throws Exception {
-		switchToContext(_driver, "NATIVE_APP");
-		automationActions.startApp("Starbucks",_driver);
+		_driver.get("starbucks.com");
+		_driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+ 		_driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
 	}
 
 
 	@Override
 	public void execTest() throws Exception {
 		try{
-			switchToContext(_driver, "NATIVE_APP");
-			_driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-			sleep(5000);
-			System.out.println(getCurrentContextHandle(_driver));
-			_driver.findElement(By.xpath("//button[text()='SIGN IN']")).click();
+ 			_driver.findElement(By.id("signIn")).click();
 
-			// Login 
-			_driver.findElement(By.xpath("//textfield[contains(text(),'Username')]")).sendKeys("uzi.eilon@gmail.com");
-			_driver.findElement(By.xpath("(//secure | //textfield[contains(text(),'password')])")).sendKeys("Perfecto1");
-			_driver.findElement(By.xpath("//button[text()='SIGN IN']")).click();
+ 			// wait a meeting , it takes time to build the tree [bug? SE-1879 ]
+			 sleep(120000);
+		 	_driver.findElement(By.xpath("//input[contains(@placeholder,'Username')]")).sendKeys("uzi.eilon@gmail.com");
+		 	_driver.findElement(By.xpath("//input[@type= 'password')]")).sendKeys("Perfecto1");
+ 		 	_driver.findElement(By.xpath("//button[@id='AT_SignIn_Button'])")).click();
 
-			switchToContext(_driver, "VISUAL");
-			_driver.findElement(By.linkText("PAY")) ;
-
+ 
 
 		}catch(Exception e)
 		{

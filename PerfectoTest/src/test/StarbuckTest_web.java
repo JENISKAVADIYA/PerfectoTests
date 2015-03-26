@@ -16,8 +16,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class StarbuckTest {
-	login l;
+public class StarbuckTest_web {
+	loginWeb l;
 	@BeforeTest
 	public void Before() {
 		
@@ -31,7 +31,7 @@ public class StarbuckTest {
 			user = URLEncoder.encode("uzie@perfectomobile.com", "UTF-8");
 	 		String password = URLEncoder.encode("Perfecto1", "UTF-8");
 	 		RemoteWebDriver driver = new RemoteWebDriver(new URL("https://" + user + ':' + password + '@' + host + "/nexperience/wd/hub"), capabilities);
-	 		l = new login(driver);
+	 		l = new loginWeb(driver);
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -19,7 +19,7 @@ import org.testng.annotations.AfterClass;
  *	This basic test handles the driver and the device
  */
 
-public abstract class PerfectoTest {
+public abstract  class PerfectoTest {
 
 
 	String _DeviceId = null;
@@ -50,7 +50,7 @@ public abstract class PerfectoTest {
 		}
 	}
 
-	public  void closeTest( ) {
+	public void closeTest() {
 		_driver.quit();
 
 	}
